@@ -1,5 +1,7 @@
 package calculator.string.split;
 
+import calculator.string.token.IntTokens;
+
 public interface Splitter {
-    String[] split(final String str);
+    IntTokens split(final String str);
 }
