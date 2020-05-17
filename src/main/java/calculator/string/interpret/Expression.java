@@ -14,18 +14,18 @@ public class Expression {
     private final String originalStr;
     private final Matcher matcher;
 
-    private Expression(String str) {
-        if (StringUtil.isEmpty(str)) {
-            str = ZERO_EXPRESSION;
+    private Expression(String expStr) {
+        if (StringUtil.isEmpty(expStr)) {
+            expStr = ZERO_EXPRESSION;
         }
 
-        this.originalStr = str;
+        this.originalStr = expStr;
         this.matcher = PATTERN.matcher(originalStr);
         this.matcher.matches();
     }
 
-    public static Expression match(final String str) {
-        return new Expression(str);
+    public static Expression match(final String expStr) {
+        return new Expression(expStr);
     }
 
     public boolean isCustom() {
