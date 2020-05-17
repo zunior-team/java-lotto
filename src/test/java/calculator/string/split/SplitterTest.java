@@ -11,12 +11,13 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("구분자 테스트")
 class SplitterTest {
+    private static final DefaultSplitter SPLITTER = new DefaultSplitter();
 
     @ParameterizedTest
     @MethodSource
     @DisplayName("기본 구분자 , or | 로 잘 나뉘어 지는지")
     void splitWithDefaultSplitter(final String str, final String[] expected) {
-        assertThat(Splitter.split(str)).containsExactly(expected);
+        assertThat(SPLITTER.split(str)).containsExactly(expected);
     }
 
     private static Stream<Arguments> splitWithDefaultSplitter() {
