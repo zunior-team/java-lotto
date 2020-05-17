@@ -10,7 +10,7 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("구분자 테스트")
-class SplitterTest {
+class DefaultSplitterTest {
     private static final DefaultSplitter SPLITTER = new DefaultSplitter();
 
     @ParameterizedTest
