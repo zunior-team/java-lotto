@@ -25,8 +25,8 @@ public class LottoNumbersTest {
 
     private static Stream<Arguments> init() {
         return Stream.of(
-                Arguments.of(Generator.lottoNumberList("1", "2", "3", "4", "5", "6")),
-                Arguments.of(Generator.lottoNumberList("1", "2", "3", "4", "5", "7"))
+                Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5, 6)),
+                Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5, 7))
         );
     }
 
@@ -42,8 +42,8 @@ public class LottoNumbersTest {
         return Stream.of(
                 Arguments.of((Object) null),
                 Arguments.of(Collections.emptyList()),
-                Arguments.of(Generator.lottoNumberList("1")),
-                Arguments.of(Generator.lottoNumberList("1", "2", "3", "4", "5"))
+                Arguments.of(Generator.lottoNumberList(1)),
+                Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5))
         );
     }
 }

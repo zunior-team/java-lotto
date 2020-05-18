@@ -1,21 +1,19 @@
 package lotto.lotto;
 
-import java.util.List;
+import lotto.number.LottoNumbers;
 
 public class LottoTicket {
-    private static final int NUM_OF_LOTTO_NUM = 6;
+    private final LottoNumbers lottoNumbers;
 
-    private final List<Integer> lottoNumbers;
-
-    public LottoTicket(List<Integer> lottoNumbers) {
+    public LottoTicket(LottoNumbers lottoNumbers) {
         validate(lottoNumbers);
 
         this.lottoNumbers = lottoNumbers;
     }
 
-    private void validate(List<Integer> lottoNumbers) {
-        if (lottoNumbers == null || lottoNumbers.size() < NUM_OF_LOTTO_NUM) {
-            throw new IllegalArgumentException("Lotto number is null or insufficient, needs " + NUM_OF_LOTTO_NUM);
+    private void validate(LottoNumbers lottoNumbers) {
+        if (lottoNumbers == null) {
+            throw new IllegalArgumentException("Lotto number is null");
         }
     }
 }
