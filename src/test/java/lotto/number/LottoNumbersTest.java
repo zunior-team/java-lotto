@@ -2,6 +2,7 @@ package lotto.number;
 
 import lotto.util.Generator;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -45,5 +46,14 @@ public class LottoNumbersTest {
                 Arguments.of(Generator.lottoNumberList(1)),
                 Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5))
         );
+    }
+
+    @Test
+    @DisplayName("중복된 숫자로 생성하려고 할때 에러")
+    void duplicatedNumber() {
+        List<LottoNumber> lottoNumbers = Generator.lottoNumberList(1, 2, 3, 4, 5, 1);
+
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> new LottoNumbers(lottoNumbers));
     }
 }
