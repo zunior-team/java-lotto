@@ -7,6 +7,7 @@ import java.util.List;
 
 import static lotto.number.LottoNumber.MAX_NUM_OF_LOTTO_NUM;
 import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO_NUM;
+import static lotto.number.LottoNumberIssuer.BASE_INDEX;
 import static lotto.number.LottoNumbers.NUM_OF_LOTTO_NUM;
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -19,7 +20,8 @@ public class LottoNumberIssuerTest {
         List<LottoNumber> lottoNumbers = LottoNumberIssuer.issue();
 
         assertThat(lottoNumbers).hasSize(NUM_OF_LOTTO_NUM);
-        assertThat(lottoNumbers.get(0)).isGreaterThanOrEqualTo(new LottoNumber(MIN_NUM_OF_LOTTO_NUM));
-        assertThat(lottoNumbers.get(5)).isLessThanOrEqualTo(new LottoNumber(MAX_NUM_OF_LOTTO_NUM));
+        assertThat(lottoNumbers.get(BASE_INDEX)).isLessThan(lottoNumbers.get(NUM_OF_LOTTO_NUM - 1));
+        assertThat(lottoNumbers.get(BASE_INDEX)).isGreaterThanOrEqualTo(new LottoNumber(MIN_NUM_OF_LOTTO_NUM));
+        assertThat(lottoNumbers.get(NUM_OF_LOTTO_NUM - 1)).isLessThanOrEqualTo(new LottoNumber(MAX_NUM_OF_LOTTO_NUM));
     }
 }

@@ -11,7 +11,7 @@ import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO_NUM;
 import static lotto.number.LottoNumbers.NUM_OF_LOTTO_NUM;
 
 public class LottoNumberIssuer {
-    private static final int BASE_INDEX = 0;
+    static final int BASE_INDEX = 0;
     private static final List<LottoNumber> LOTTO_NUMBERS =
             IntStream.rangeClosed(MIN_NUM_OF_LOTTO_NUM, MAX_NUM_OF_LOTTO_NUM)
                     .mapToObj(LottoNumber::new)
