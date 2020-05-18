@@ -13,7 +13,7 @@ public class LottoTicket {
 
     private void validate(LottoNumbers lottoNumbers) {
         if (lottoNumbers == null) {
-            throw new IllegalArgumentException("Lotto number is null");
+            throw new IllegalArgumentException("LottoNumbers is null");
         }
     }
 }
