@@ -61,7 +61,7 @@ class IntTokensTest {
 
     @ParameterizedTest
     @MethodSource
-    @DisplayName("음수 혹은 문자가 있을때 초기화 실패")
+    @DisplayName("음수 혹은 숫자가 아닌 문자열이 있을때 초기화 실패")
     void calculate(final String[] tokens, final int expected) {
         IntTokens token = IntTokens.init(tokens);
 

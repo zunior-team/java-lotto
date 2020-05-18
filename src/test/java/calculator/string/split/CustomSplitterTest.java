@@ -15,7 +15,7 @@ class CustomSplitterTest {
 
     @ParameterizedTest
     @MethodSource
-    @DisplayName("기본 구분자 , 와 | 에 추가로 커스텀 구분자를 추가했을때 잘 나뉘어 지는지")
+    @DisplayName("기본 구분자 , 와 : 에 추가로 커스텀 구분자를 추가했을때 잘 나뉘어 지는지")
     void splitWithDefaultSplitter(final String customSplitter, final String str, final IntTokens expected) {
         CustomSplitter splitter = CustomSplitter.init(customSplitter);
 

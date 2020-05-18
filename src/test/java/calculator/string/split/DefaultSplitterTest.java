@@ -16,7 +16,7 @@ class DefaultSplitterTest {
 
     @ParameterizedTest
     @MethodSource
-    @DisplayName("기본 구분자 , or | 로 잘 나뉘어 지는지")
+    @DisplayName("기본 구분자 , or : 로 잘 나뉘어 지는지")
     void splitWithDefaultSplitter(final String str, final IntTokens expected) {
         assertThat(SPLITTER.split(str)).isEqualTo(expected);
     }
