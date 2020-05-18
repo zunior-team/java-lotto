@@ -2,8 +2,6 @@ package lotto;
 
 import lotto.lotto.LottoTicket;
 import lotto.lotto.LottoTickets;
-import lotto.number.LottoNumber;
-import lotto.number.LottoNumberGenerator;
 import lotto.number.LottoNumbers;
 
 import java.util.List;
@@ -34,8 +32,6 @@ public class LottoSeller {
     }
 
     private static LottoTicket generateAuto() {
-        List<LottoNumber> lottoNumbers = LottoNumberGenerator.generate();
-
-        return new LottoTicket(new LottoNumbers(lottoNumbers));
+        return new LottoTicket(LottoNumbers.auto());
     }
 }

@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 public class LottoNumbers {
     static final int NUM_OF_LOTTO_NUM = 6;
+
     private final List<LottoNumber> lottoNumbers;
 
     public LottoNumbers(final List<LottoNumber> lottoNumbers) {
@@ -29,6 +30,10 @@ public class LottoNumbers {
         if (numberSet.size() < NUM_OF_LOTTO_NUM) {
             throw new IllegalArgumentException("There is number duplication");
         }
+    }
+
+    public static LottoNumbers auto() {
+        return new LottoNumbers(LottoNumberGenerator.generate());
     }
 
     public List<Integer> toInts() {
