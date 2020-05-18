@@ -1,5 +1,6 @@
 package lotto.util;
 
+import lotto.lotto.LottoTicket;
 import lotto.number.LottoNumber;
 import lotto.number.LottoNumbers;
 
@@ -19,5 +20,9 @@ public class Generator {
 
     public static LottoNumbers lottoNumbers(final int... numbers) {
         return new LottoNumbers(lottoNumberList(numbers));
+    }
+
+    public static LottoTicket lottoTicket(final int... numbers) {
+        return new LottoTicket(lottoNumbers(numbers));
     }
 }
