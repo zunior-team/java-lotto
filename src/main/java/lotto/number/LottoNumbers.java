@@ -10,7 +10,7 @@ public class LottoNumbers {
 
     private final List<LottoNumber> lottoNumbers;
 
-    public LottoNumbers(final List<LottoNumber> lottoNumbers) {
+    private LottoNumbers(final List<LottoNumber> lottoNumbers) {
         validate(lottoNumbers);
 
         this.lottoNumbers = lottoNumbers;
@@ -35,6 +35,7 @@ public class LottoNumbers {
     public static LottoNumbers init(final List<LottoNumber> lottoNumbers) {
         return new LottoNumbers(lottoNumbers);
     }
+
     public static LottoNumbers auto() {
         return new LottoNumbers(LottoNumberGenerator.generate());
     }

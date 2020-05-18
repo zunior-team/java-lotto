@@ -21,7 +21,7 @@ class LottoTicketsTest {
     @MethodSource
     @DisplayName("초기화 테스트")
     void init(final List<LottoTicket> lottoTickets) {
-        assertThatCode(() -> new LottoTickets(lottoTickets)).doesNotThrowAnyException();
+        assertThatCode(() -> LottoTickets.init(lottoTickets)).doesNotThrowAnyException();
     }
 
     private static Stream<Arguments> init() {
@@ -39,6 +39,6 @@ class LottoTicketsTest {
     @DisplayName("초기화 실패")
     void initFail(final List<LottoTicket> lottoTickets) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoTickets(lottoTickets));
+                .isThrownBy(() -> LottoTickets.init(lottoTickets));
     }
 }

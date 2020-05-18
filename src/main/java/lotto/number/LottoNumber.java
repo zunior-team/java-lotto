@@ -3,8 +3,8 @@ package lotto.number;
 import java.util.Objects;
 
 public class LottoNumber implements Comparable<LottoNumber> {
-    static final int MIN_NUM_OF_LOTTO_NUM = 1;
-    static final int MAX_NUM_OF_LOTTO_NUM = 45;
+    static final int MIN_NUM_OF_LOTTO = 1;
+    static final int MAX_NUM_OF_LOTTO = 45;
 
     private final int number;
 
@@ -15,9 +15,9 @@ public class LottoNumber implements Comparable<LottoNumber> {
     }
 
     private void validate(int number) {
-        if (number < MIN_NUM_OF_LOTTO_NUM || MAX_NUM_OF_LOTTO_NUM < number) {
+        if (number < MIN_NUM_OF_LOTTO || MAX_NUM_OF_LOTTO < number) {
             throw new IllegalArgumentException(
-                    "Lotto number must in between " + MIN_NUM_OF_LOTTO_NUM + " and " + MAX_NUM_OF_LOTTO_NUM
+                    "Lotto number must in between " + MIN_NUM_OF_LOTTO + " and " + MAX_NUM_OF_LOTTO
             );
         }
     }

@@ -10,28 +10,29 @@ import java.util.stream.Stream;
 
 public class LottoSeller {
     private static final int PRICE_OF_A_TICKET = 1000;
+    private static final int ZERO = 0;
 
     private LottoSeller() {}
 
     public static LottoTickets buy(final int payment) {
         validate(payment);
 
-        return new LottoTickets(buyAutoTickets(payment));
+        return LottoTickets.init(buyAutoLotto(payment));
     }
 
-    private static List<LottoTicket> buyAutoTickets(int payment) {
+    private static List<LottoTicket> buyAutoLotto(final int payment) {
         return Stream.generate(LottoSeller::generateAuto)
                     .limit(payment / PRICE_OF_A_TICKET)
                     .collect(Collectors.toList());
     }
 
     private static void validate(final int payment) {
-        if (payment <= 0) {
+        if (payment <= ZERO) {
             throw new IllegalArgumentException("Payment must be a positive number");
         }
     }
 
     private static LottoTicket generateAuto() {
-        return new LottoTicket(LottoNumbers.auto());
+        return LottoTicket.init(LottoNumbers.auto());
     }
 }

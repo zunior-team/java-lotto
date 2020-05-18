@@ -15,9 +15,8 @@ public enum Prize {
     private final int matchCount;
     private final int prizeMoney;
 
-    private static final Map<Integer, Prize> PRIZES =
-            Arrays.stream(Prize.values())
-                    .collect(Collectors.toMap(Prize::getMatchCount, Function.identity()));
+    private static final Map<Integer, Prize> PRIZES = Arrays.stream(Prize.values())
+            .collect(Collectors.toMap(Prize::getMatchCount, Function.identity()));
 
     Prize(final int matchCount, final  int prizeMoney) {
         this.matchCount = matchCount;
@@ -36,7 +35,7 @@ public enum Prize {
         return matchCount;
     }
 
-    public int getPrizeMoeny() {
+    public int getPrizeMoney() {
         return prizeMoney;
     }
 }

@@ -6,14 +6,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static lotto.number.LottoNumber.MAX_NUM_OF_LOTTO_NUM;
-import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO_NUM;
+import static lotto.number.LottoNumber.MAX_NUM_OF_LOTTO;
+import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO;
 import static lotto.number.LottoNumbers.NUM_OF_LOTTO_NUM;
 
 public class LottoNumberGenerator {
     static final int BASE_INDEX = 0;
     private static final List<LottoNumber> LOTTO_NUMBERS =
-            IntStream.rangeClosed(MIN_NUM_OF_LOTTO_NUM, MAX_NUM_OF_LOTTO_NUM)
+            IntStream.rangeClosed(MIN_NUM_OF_LOTTO, MAX_NUM_OF_LOTTO)
                     .mapToObj(LottoNumber::new)
                     .collect(Collectors.toList());
 

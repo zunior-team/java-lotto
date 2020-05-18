@@ -7,7 +7,7 @@ import java.util.List;
 public class LottoTicketDto {
     private final List<Integer> numbers;
 
-    public LottoTicketDto(final LottoTicket lottoTicket) {
+    private LottoTicketDto(final LottoTicket lottoTicket) {
         this.numbers = lottoTicket.getNumbers();
     }
 
