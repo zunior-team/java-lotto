@@ -18,7 +18,7 @@ public enum Prize {
     private static final Map<Integer, Prize> PRIZES = Arrays.stream(Prize.values())
             .collect(Collectors.toMap(Prize::getMatchCount, Function.identity()));
 
-    Prize(final int matchCount, final  int prizeMoney) {
+    Prize(final int matchCount, final int prizeMoney) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
     }

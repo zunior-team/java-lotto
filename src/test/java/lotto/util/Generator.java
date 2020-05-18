@@ -23,6 +23,6 @@ public class Generator {
     }
 
     public static LottoTicket lottoTicket(final int... numbers) {
-        return new LottoTicket(lottoNumbers(numbers));
+        return LottoTicket.init(lottoNumbers(numbers));
     }
 }

@@ -1,6 +1,5 @@
 package lotto;
 
-import lotto.lotto.LottoTickets;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -13,8 +12,8 @@ public class LottoSellerTest {
     @CsvSource(value = {"1,0", "100,0", "1000,1", "2000,2", "10000,10", "11111,11"})
     @DisplayName("돈을 주면 해당하는 갯수만큼 판다.")
     void buy(final int money, final int expected) {
-        LottoTickets boughtTickets = LottoSeller.buy(money);
+        Lotto lotto = LottoSeller.buy(money);
 
-        assertThat(boughtTickets.getLottoTickets()).hasSize(expected);
+        assertThat(lotto.getLottoTickets()).hasSize(expected);
     }
 }

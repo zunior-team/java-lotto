@@ -14,10 +14,12 @@ public class LottoSeller {
 
     private LottoSeller() {}
 
-    public static LottoTickets buy(final int payment) {
+    public static Lotto buy(final int payment) {
         validate(payment);
 
-        return LottoTickets.init(buyAutoLotto(payment));
+        LottoTickets lottoTickets = LottoTickets.init(buyAutoLotto(payment));
+
+        return Lotto.init(payment, lottoTickets);
     }
 
     private static List<LottoTicket> buyAutoLotto(final int payment) {
