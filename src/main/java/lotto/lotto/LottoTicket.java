@@ -2,6 +2,8 @@ package lotto.lotto;
 
 import lotto.number.LottoNumbers;
 
+import java.util.List;
+
 public class LottoTicket {
     private final LottoNumbers lottoNumbers;
 
@@ -15,5 +17,9 @@ public class LottoTicket {
         if (lottoNumbers == null) {
             throw new IllegalArgumentException("LottoNumbers is null");
         }
+    }
+
+    public List<Integer> getNumbers() {
+        return lottoNumbers.toInts();
     }
 }
