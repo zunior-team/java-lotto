@@ -10,16 +10,16 @@ import static lotto.number.LottoNumber.MAX_NUM_OF_LOTTO_NUM;
 import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO_NUM;
 import static lotto.number.LottoNumbers.NUM_OF_LOTTO_NUM;
 
-public class LottoNumberIssuer {
+public class LottoNumberGenerator {
     static final int BASE_INDEX = 0;
     private static final List<LottoNumber> LOTTO_NUMBERS =
             IntStream.rangeClosed(MIN_NUM_OF_LOTTO_NUM, MAX_NUM_OF_LOTTO_NUM)
                     .mapToObj(LottoNumber::new)
                     .collect(Collectors.toList());
 
-    private LottoNumberIssuer() {}
+    private LottoNumberGenerator() {}
 
-    public static List<LottoNumber> issue() {
+    public static List<LottoNumber> generate() {
         List<LottoNumber> numberPool = createNumberPool();
 
         Collections.shuffle(numberPool);
