@@ -19,7 +19,7 @@ public class Generator {
     }
 
     public static LottoNumbers lottoNumbers(final int... numbers) {
-        return new LottoNumbers(lottoNumberList(numbers));
+        return LottoNumbers.init(lottoNumberList(numbers));
     }
 
     public static LottoTicket lottoTicket(final int... numbers) {

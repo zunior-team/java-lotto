@@ -21,7 +21,7 @@ public class LottoNumbersTest {
     @MethodSource
     @DisplayName("로또 숫자 초기화 테스트")
     void init(final List<LottoNumber> lottoNumbers) {
-        assertThatCode(() -> new LottoNumbers(lottoNumbers)).doesNotThrowAnyException();
+        assertThatCode(() -> LottoNumbers.init(lottoNumbers)).doesNotThrowAnyException();
     }
 
     private static Stream<Arguments> init() {
@@ -36,7 +36,7 @@ public class LottoNumbersTest {
     @DisplayName("로또 숫자 초기화 실패 테스트")
     void initFail(final List<LottoNumber> lottoNumbers) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoNumbers(lottoNumbers));
+                .isThrownBy(() -> LottoNumbers.init(lottoNumbers));
     }
 
     private static Stream<Arguments> initFail() {
@@ -54,6 +54,6 @@ public class LottoNumbersTest {
         List<LottoNumber> lottoNumbers = Generator.lottoNumberList(1, 2, 3, 4, 5, 1);
 
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoNumbers(lottoNumbers));
+                .isThrownBy(() -> LottoNumbers.init(lottoNumbers));
     }
 }

@@ -16,7 +16,7 @@ public class LottoNumbers {
         this.lottoNumbers = lottoNumbers;
     }
 
-    private void validate(List<LottoNumber> lottoNumbers) {
+    private void validate(final List<LottoNumber> lottoNumbers) {
         if (lottoNumbers == null || lottoNumbers.size() < NUM_OF_LOTTO_NUM) {
             throw new IllegalArgumentException("Lotto number must be a " + NUM_OF_LOTTO_NUM);
         }
@@ -24,7 +24,7 @@ public class LottoNumbers {
         duplicateCheck(lottoNumbers);
     }
 
-    private void duplicateCheck(List<LottoNumber> lottoNumbers) {
+    private void duplicateCheck(final List<LottoNumber> lottoNumbers) {
         Set<LottoNumber> numberSet = new HashSet<>(lottoNumbers);
 
         if (numberSet.size() < NUM_OF_LOTTO_NUM) {
@@ -32,6 +32,9 @@ public class LottoNumbers {
         }
     }
 
+    public static LottoNumbers init(final List<LottoNumber> lottoNumbers) {
+        return new LottoNumbers(lottoNumbers);
+    }
     public static LottoNumbers auto() {
         return new LottoNumbers(LottoNumberGenerator.generate());
     }
