@@ -1,13 +1,13 @@
 package lotto.number;
 
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 
 import static lotto.number.LottoNumber.MAX_NUM_OF_LOTTO_NUM;
 import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO_NUM;
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("로또에 사용하는 숫자에 대한 테스트")
 public class LottoNumberTest {
@@ -25,5 +25,15 @@ public class LottoNumberTest {
     void initFail(final int number) {
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> new LottoNumber(number));
+    }
+
+    @Test
+    @DisplayName("compare to 테스트")
+    void compareTo() {
+        LottoNumber numFive = new LottoNumber(5);
+        LottoNumber numTen = new LottoNumber(10);
+
+        assertThat(numFive).isLessThan(numTen);
+        assertThat(numTen).isGreaterThan(numFive);
     }
 }
