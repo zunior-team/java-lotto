@@ -1,6 +1,6 @@
 package lotto.number;
 
-public class LottoNumber {
+public class LottoNumber implements Comparable<LottoNumber> {
     static final int MIN_NUM_OF_LOTTO_NUM = 1;
     static final int MAX_NUM_OF_LOTTO_NUM = 45;
 
@@ -18,5 +18,10 @@ public class LottoNumber {
                     "Lotto number must in between " + MIN_NUM_OF_LOTTO_NUM + " and " + MAX_NUM_OF_LOTTO_NUM
             );
         }
+    }
+
+    @Override
+    public int compareTo(LottoNumber anotherLottoNumber) {
+        return this.number - anotherLottoNumber.number;
     }
 }
