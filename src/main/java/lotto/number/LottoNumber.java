@@ -8,18 +8,22 @@ public class LottoNumber implements Comparable<LottoNumber> {
 
     private final int number;
 
-    public LottoNumber(int number) {
+    private LottoNumber(final int number) {
         validate(number);
 
         this.number = number;
     }
 
-    private void validate(int number) {
+    private void validate(final int number) {
         if (number < MIN_NUM_OF_LOTTO || MAX_NUM_OF_LOTTO < number) {
             throw new IllegalArgumentException(
                     "Lotto number must in between " + MIN_NUM_OF_LOTTO + " and " + MAX_NUM_OF_LOTTO
             );
         }
+    }
+
+    public static LottoNumber of(final int number) {
+        return new LottoNumber(number);
     }
 
     public int toInt() {

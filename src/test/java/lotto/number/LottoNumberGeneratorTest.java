@@ -21,7 +21,7 @@ public class LottoNumberGeneratorTest {
 
         assertThat(lottoNumbers).hasSize(NUM_OF_LOTTO_NUM);
         assertThat(lottoNumbers.get(BASE_INDEX)).isLessThan(lottoNumbers.get(NUM_OF_LOTTO_NUM - 1));
-        assertThat(lottoNumbers.get(BASE_INDEX)).isGreaterThanOrEqualTo(new LottoNumber(MIN_NUM_OF_LOTTO));
-        assertThat(lottoNumbers.get(NUM_OF_LOTTO_NUM - 1)).isLessThanOrEqualTo(new LottoNumber(MAX_NUM_OF_LOTTO));
+        assertThat(lottoNumbers.get(BASE_INDEX)).isGreaterThanOrEqualTo(LottoNumber.of(MIN_NUM_OF_LOTTO));
+        assertThat(lottoNumbers.get(NUM_OF_LOTTO_NUM - 1)).isLessThanOrEqualTo(LottoNumber.of(MAX_NUM_OF_LOTTO));
     }
 }

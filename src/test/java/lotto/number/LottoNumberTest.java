@@ -16,7 +16,7 @@ public class LottoNumberTest {
     @ValueSource(ints = {MIN_NUM_OF_LOTTO, (MIN_NUM_OF_LOTTO + MAX_NUM_OF_LOTTO) / 2, MAX_NUM_OF_LOTTO})
     @DisplayName("초기화 테스트")
     void init(final int number) {
-        assertThatCode(() -> new LottoNumber(number)).doesNotThrowAnyException();
+        assertThatCode(() -> LottoNumber.of(number)).doesNotThrowAnyException();
     }
 
     @ParameterizedTest
@@ -24,14 +24,14 @@ public class LottoNumberTest {
     @DisplayName("초기화 실패 테스트")
     void initFail(final int number) {
         assertThatIllegalArgumentException()
-                .isThrownBy(() -> new LottoNumber(number));
+                .isThrownBy(() -> LottoNumber.of(number));
     }
 
     @Test
     @DisplayName("compare to 테스트")
     void compareTo() {
-        LottoNumber numFive = new LottoNumber(5);
-        LottoNumber numTen = new LottoNumber(10);
+        LottoNumber numFive = LottoNumber.of(5);
+        LottoNumber numTen = LottoNumber.of(10);
 
         assertThat(numFive).isLessThan(numTen);
         assertThat(numTen).isGreaterThan(numFive);

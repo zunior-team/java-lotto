@@ -14,7 +14,7 @@ public class LottoNumberGenerator {
     static final int BASE_INDEX = 0;
     private static final List<LottoNumber> LOTTO_NUMBERS =
             IntStream.rangeClosed(MIN_NUM_OF_LOTTO, MAX_NUM_OF_LOTTO)
-                    .mapToObj(LottoNumber::new)
+                    .mapToObj(LottoNumber::of)
                     .collect(Collectors.toList());
 
     private LottoNumberGenerator() {}

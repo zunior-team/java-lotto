@@ -1,0 +1,61 @@
+package lotto.view;
+
+import lotto.dto.LottoTicketDto;
+import lotto.dto.MatchResult;
+import lotto.prize.LottoPrize;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class ConsoleOutput {
+    private static final String BUY_INFO_FORMAT = "%d개를 구매했습니다.";
+    private static final String WIN_PRIZE_STATISTICS_STATEMENT = "당첨 통계\n----------";
+    private static final String LOTTO_PRIZE_SUMMARY_FORMAT = "%d개 일치 (%d원) - %d개";
+    private static final String EARNINGS_RATE_FORMAT = "총 수익률은 %.2f입니다.(기준이 1이기 때문에 결과적으로 손해라는 의미임)";
+
+    private ConsoleOutput() {}
+
+    public static void showLottoTickets(final List<LottoTicketDto> lottoTickets) {
+        System.out.println(String.format(BUY_INFO_FORMAT, lottoTickets.size()));
+
+        lottoTickets.stream()
+                .map(LottoTicketDto::getNumbers)
+                .map(List::toArray)
+                .map(Arrays::toString)
+                .forEach(System.out::println);
+    }
+
+    public static void showMatchResult(final MatchResult matchResult) {
+        System.out.println(WIN_PRIZE_STATISTICS_STATEMENT);
+
+        Arrays.stream(extractMeaningfulPrize())
+                .forEach(lottoPrize -> showPrizeResult(lottoPrize, matchResult));
+
+        System.out.println(String.format(EARNINGS_RATE_FORMAT, calculateEarnings(matchResult)));
+    }
+
+    private static Double calculateEarnings(MatchResult matchResult) {
+        double sum = Arrays.stream(LottoPrize.values())
+                .mapToDouble(lottoPrize -> (double) lottoPrize.getPrizeMoney() * matchResult.count(lottoPrize))
+                .sum();
+
+        return sum / matchResult.getPayment();
+    }
+
+    private static void showPrizeResult(final LottoPrize lottoPrize, final MatchResult matchResult) {
+        String summary = String.format(
+                LOTTO_PRIZE_SUMMARY_FORMAT,
+                lottoPrize.getMatchCount(),
+                lottoPrize.getPrizeMoney(),
+                matchResult.count(lottoPrize)
+        );
+
+        System.out.println(summary);
+    }
+
+    private static LottoPrize[] extractMeaningfulPrize() {
+        LottoPrize[] lottoPrizes = LottoPrize.values();
+
+        return Arrays.copyOf(lottoPrizes, lottoPrizes.length - 1);
+    }
+}

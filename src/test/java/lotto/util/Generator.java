@@ -16,7 +16,7 @@ public class Generator {
 
     public static List<LottoNumber> lottoNumberList(final int... numbers) {
         return Arrays.stream(numbers)
-                .mapToObj(LottoNumber::new)
+                .mapToObj(LottoNumber::of)
                 .collect(Collectors.toList());
     }
 
