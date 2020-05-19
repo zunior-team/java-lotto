@@ -1,6 +1,8 @@
 package lotto;
 
 import lotto.dto.MatchResult;
+import lotto.lotto.Lotto;
+import lotto.lotto.LottoSeller;
 import lotto.lotto.WinningLotto;
 import lotto.view.ConsoleInput;
 import lotto.view.ConsoleOutput;
