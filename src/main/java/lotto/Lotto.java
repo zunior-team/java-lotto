@@ -1,7 +1,9 @@
 package lotto;
 
 import lotto.dto.LottoTicketDto;
+import lotto.dto.MatchResult;
 import lotto.lotto.LottoTickets;
+import lotto.lotto.WinningLotto;
 
 import java.util.List;
 
@@ -28,5 +30,10 @@ public class Lotto {
 
     public List<LottoTicketDto> getLottoTickets() {
         return lottoTickets.getLottoTickets();
+    }
+
+    public MatchResult match(final WinningLotto winningLotto) {
+        lottoTickets.match(winningLotto);
+        return null;
     }
 }

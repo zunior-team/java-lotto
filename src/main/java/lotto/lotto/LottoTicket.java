@@ -1,6 +1,7 @@
 package lotto.lotto;
 
 import lotto.number.LottoNumbers;
+import lotto.prize.Prize;
 
 import java.util.List;
 
@@ -25,5 +26,8 @@ public class LottoTicket {
 
     public List<Integer> getNumbers() {
         return lottoNumbers.toInts();
+    }
+
+    public Prize match(WinningLotto winningLotto) {
     }
 }
