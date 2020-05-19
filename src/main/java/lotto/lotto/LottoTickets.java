@@ -1,7 +1,7 @@
 package lotto.lotto;
 
 import lotto.dto.LottoTicketDto;
-import lotto.prize.Prize;
+import lotto.prize.LottoPrize;
 
 import java.util.List;
 import java.util.Map;
@@ -33,9 +33,9 @@ public class LottoTickets {
                 .collect(Collectors.toList());
     }
 
-    public Map<Prize, Long> match(WinningLotto winningLotto) {
+    public Map<LottoPrize, Long> matchLottoNumbers(WinningLotto winningLotto) {
         return lottoTickets.stream()
-                .map(lottoTicket -> lottoTicket.match(winningLotto))
+                .map(lottoTicket -> lottoTicket.matchPrize(winningLotto))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 }

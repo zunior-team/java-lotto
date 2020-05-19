@@ -21,10 +21,10 @@ public class LottoNumbers {
             throw new IllegalArgumentException("Lotto number must be a " + NUM_OF_LOTTO_NUM);
         }
 
-        duplicateCheck(lottoNumbers);
+        checkDuplication(lottoNumbers);
     }
 
-    private void duplicateCheck(final List<LottoNumber> lottoNumbers) {
+    private void checkDuplication(final List<LottoNumber> lottoNumbers) {
         Set<LottoNumber> numberSet = new HashSet<>(lottoNumbers);
 
         if (numberSet.size() < NUM_OF_LOTTO_NUM) {
@@ -38,6 +38,17 @@ public class LottoNumbers {
 
     public static LottoNumbers auto() {
         return new LottoNumbers(LottoNumberGenerator.generate());
+    }
+
+    public int matchCount(LottoNumbers anotherLottoNumbers) {
+        return (int) lottoNumbers.stream()
+                .filter(anotherLottoNumbers::contains)
+                .count();
+    }
+
+    private boolean contains(LottoNumber lottoNumber) {
+        return lottoNumbers.stream()
+                .anyMatch(lottoNumber::equals);
     }
 
     public List<Integer> toInts() {

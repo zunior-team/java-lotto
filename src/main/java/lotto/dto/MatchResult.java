@@ -1,20 +1,19 @@
 package lotto.dto;
 
-import lotto.prize.Prize;
+import lotto.prize.LottoPrize;
 
 import java.util.Map;
 
 public class MatchResult {
     private final int payment;
-    private final Map<Prize, Integer> matchResult;
+    private final Map<LottoPrize, Long> matchResult;
 
-    private MatchResult(final int payment, final Map<Prize, Integer> matchResult) {
+    private MatchResult(final int payment, final Map<LottoPrize, Long> matchResult) {
         this.payment = payment;
         this.matchResult = matchResult;
     }
 
-    public static MatchResult init(final int payment, final Map<Prize, Integer> matchResult) {
+    public static MatchResult init(final int payment, final Map<LottoPrize, Long> matchResult) {
         return new MatchResult(payment, matchResult);
     }
-
 }

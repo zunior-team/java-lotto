@@ -4,7 +4,11 @@ import lotto.number.LottoNumbers;
 
 public class WinningLotto extends LottoTicket {
 
-    public WinningLotto(final LottoNumbers lottoNumbers) {
+    private WinningLotto(final LottoNumbers lottoNumbers) {
         super(lottoNumbers);
+    }
+
+    public static WinningLotto init(final LottoNumbers lottoNumbers) {
+        return new WinningLotto(lottoNumbers);
     }
 }

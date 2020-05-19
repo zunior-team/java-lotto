@@ -4,8 +4,10 @@ import lotto.dto.LottoTicketDto;
 import lotto.dto.MatchResult;
 import lotto.lotto.LottoTickets;
 import lotto.lotto.WinningLotto;
+import lotto.prize.LottoPrize;
 
 import java.util.List;
+import java.util.Map;
 
 public class Lotto {
     private final int payment;
@@ -33,7 +35,8 @@ public class Lotto {
     }
 
     public MatchResult match(final WinningLotto winningLotto) {
-        lottoTickets.match(winningLotto);
-        return null;
+        Map<LottoPrize, Long> lottoPrizes = lottoTickets.matchLottoNumbers(winningLotto);
+
+        return MatchResult.init(payment, lottoPrizes);
     }
 }

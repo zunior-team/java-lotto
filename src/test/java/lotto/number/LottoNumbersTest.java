@@ -11,8 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("로또 숫자 리스트를 가지고 있는 로또 넘버즈 테스트")
 public class LottoNumbersTest {
@@ -55,5 +54,26 @@ public class LottoNumbersTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> LottoNumbers.init(lottoNumbers));
+    }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("당첨 번호와 매치 테스트")
+    void match(final LottoNumbers lottoNumbers, final LottoNumbers winningLottoNumbers, final int expected) {
+        assertThat(lottoNumbers.matchCount(winningLottoNumbers)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> match() {
+        LottoNumbers winningLottoNumbers = Generator.lottoNumbers(1, 2, 3, 4, 5, 6);
+
+        return Stream.of(
+                Arguments.of(Generator.lottoNumbers(1, 2, 3, 4, 5, 6), winningLottoNumbers, 6),
+                Arguments.of(Generator.lottoNumbers(1, 2, 3, 4, 5, 7), winningLottoNumbers, 5),
+                Arguments.of(Generator.lottoNumbers(1, 2, 3, 4, 7, 8), winningLottoNumbers, 4),
+                Arguments.of(Generator.lottoNumbers(1, 2, 3, 7, 8, 9), winningLottoNumbers, 3),
+                Arguments.of(Generator.lottoNumbers(1, 2, 7, 8, 9, 10), winningLottoNumbers, 2),
+                Arguments.of(Generator.lottoNumbers(1, 7, 8, 9, 10, 11), winningLottoNumbers, 1),
+                Arguments.of(Generator.lottoNumbers(7, 8, 9, 10, 11, 12), winningLottoNumbers, 0)
+        );
     }
 }

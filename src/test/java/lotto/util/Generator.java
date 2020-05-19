@@ -1,6 +1,8 @@
 package lotto.util;
 
 import lotto.lotto.LottoTicket;
+import lotto.lotto.LottoTickets;
+import lotto.lotto.WinningLotto;
 import lotto.number.LottoNumber;
 import lotto.number.LottoNumbers;
 
@@ -24,5 +26,13 @@ public class Generator {
 
     public static LottoTicket lottoTicket(final int... numbers) {
         return LottoTicket.init(lottoNumbers(numbers));
+    }
+
+    public static WinningLotto winningLotto(final int... numbers) {
+        return WinningLotto.init(lottoNumbers(numbers));
+    }
+
+    public static LottoTickets lottoTickets(final LottoTicket... lottoTickets) {
+        return LottoTickets.init(Arrays.asList(lottoTickets));
     }
 }

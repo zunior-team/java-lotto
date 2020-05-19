@@ -1,12 +1,12 @@
 package lotto.lotto;
 
 import lotto.number.LottoNumbers;
-import lotto.prize.Prize;
+import lotto.prize.LottoPrize;
 
 import java.util.List;
 
 public class LottoTicket {
-    private final LottoNumbers lottoNumbers;
+    protected final LottoNumbers lottoNumbers;
 
     protected LottoTicket(final LottoNumbers lottoNumbers) {
         validate(lottoNumbers);
@@ -28,6 +28,9 @@ public class LottoTicket {
         return lottoNumbers.toInts();
     }
 
-    public Prize match(WinningLotto winningLotto) {
+    public LottoPrize matchPrize(WinningLotto winningLotto) {
+        int matchCount = lottoNumbers.matchCount(winningLotto.lottoNumbers);
+
+        return LottoPrize.of(matchCount);
     }
 }

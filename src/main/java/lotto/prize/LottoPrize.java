@@ -5,7 +5,7 @@ import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public enum Prize {
+public enum LottoPrize {
     FIRST(6, 2000000000),
     SECOND(5, 1500000),
     THIRD(4, 50000),
@@ -15,15 +15,15 @@ public enum Prize {
     private final int matchCount;
     private final int prizeMoney;
 
-    private static final Map<Integer, Prize> PRIZES = Arrays.stream(Prize.values())
-            .collect(Collectors.toMap(Prize::getMatchCount, Function.identity()));
+    private static final Map<Integer, LottoPrize> PRIZES = Arrays.stream(LottoPrize.values())
+            .collect(Collectors.toMap(LottoPrize::getMatchCount, Function.identity()));
 
-    Prize(final int matchCount, final int prizeMoney) {
+    LottoPrize(final int matchCount, final int prizeMoney) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
     }
 
-    public static Prize match(final int matchCount) {
+    public static LottoPrize of(final int matchCount) {
         if (!PRIZES.containsKey(matchCount)) {
             return NONE;
         }

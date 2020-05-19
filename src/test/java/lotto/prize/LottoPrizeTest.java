@@ -10,24 +10,24 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DisplayName("당첨 테스트")
-public class PrizeTest {
+public class LottoPrizeTest {
 
     @ParameterizedTest
     @MethodSource
     @DisplayName("매치되는 개수별 등수 테스트")
-    void match(final int matchCount, final Prize expected) {
-        assertThat(Prize.match(matchCount)).isEqualTo(expected);
+    void match(final int matchCount, final LottoPrize expected) {
+        assertThat(LottoPrize.of(matchCount)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> match() {
         return Stream.of(
-                Arguments.of(6, Prize.FIRST),
-                Arguments.of(5, Prize.SECOND),
-                Arguments.of(4, Prize.THIRD),
-                Arguments.of(3, Prize.FOURTH),
-                Arguments.of(2, Prize.NONE),
-                Arguments.of(1, Prize.NONE),
-                Arguments.of(0, Prize.NONE)
+                Arguments.of(6, LottoPrize.FIRST),
+                Arguments.of(5, LottoPrize.SECOND),
+                Arguments.of(4, LottoPrize.THIRD),
+                Arguments.of(3, LottoPrize.FOURTH),
+                Arguments.of(2, LottoPrize.NONE),
+                Arguments.of(1, LottoPrize.NONE),
+                Arguments.of(0, LottoPrize.NONE)
         );
     }
 }
