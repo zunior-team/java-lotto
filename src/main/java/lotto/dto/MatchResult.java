@@ -5,7 +5,7 @@ import lotto.prize.LottoPrize;
 import java.util.Map;
 
 public class MatchResult {
-    private static final long DEFAULT_VALUE = 0L;
+    private static final long DEFAULT_COUNT = 0L;
 
     private final int payment;
     private final Map<LottoPrize, Long> matchResult;
@@ -24,6 +24,6 @@ public class MatchResult {
     }
 
     public Long count(final LottoPrize lottoPrize) {
-        return matchResult.getOrDefault(lottoPrize, DEFAULT_VALUE);
+        return matchResult.getOrDefault(lottoPrize, DEFAULT_COUNT);
     }
 }
