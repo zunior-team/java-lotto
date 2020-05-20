@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoSeller {
-    private static final int PRICE_OF_A_TICKET = 1000;
+    static final int PRICE_OF_A_TICKET = 1000;
     private static final int ZERO = 0;
 
     private LottoSeller() {}

@@ -1,7 +1,5 @@
-package lotto;
+package lotto.lotto;
 
-import lotto.lotto.Lotto;
-import lotto.lotto.LottoSeller;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
