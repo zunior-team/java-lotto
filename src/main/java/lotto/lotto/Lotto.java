@@ -32,8 +32,8 @@ public class Lotto {
         return lottoTickets.getLottoTickets();
     }
 
-    public MatchResult match(final WinningLotto winningLotto) {
-        Map<LottoPrize, Long> lottoPrizes = lottoTickets.matchLottoNumbers(winningLotto);
+    public MatchResult match(final WinningNumbers winningNumbers) {
+        Map<LottoPrize, Long> lottoPrizes = lottoTickets.matchLottoNumbers(winningNumbers);
 
         return MatchResult.init(payment, lottoPrizes);
     }

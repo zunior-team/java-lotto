@@ -28,8 +28,8 @@ public class LottoTicket {
         return lottoNumbers.toInts();
     }
 
-    public LottoPrize matchPrize(WinningLotto winningLotto) {
-        int matchCount = lottoNumbers.matchCount(winningLotto.lottoNumbers);
+    public LottoPrize matchPrize(final WinningNumbers winningNumbers) {
+        int matchCount = lottoNumbers.matchCount(winningNumbers.lottoNumbers);
 
         return LottoPrize.of(matchCount);
     }

@@ -3,7 +3,7 @@ package lotto;
 import lotto.dto.MatchResult;
 import lotto.lotto.Lotto;
 import lotto.lotto.LottoSeller;
-import lotto.lotto.WinningLotto;
+import lotto.lotto.WinningNumbers;
 import lotto.view.ConsoleInput;
 import lotto.view.ConsoleOutput;
 
@@ -17,7 +17,7 @@ public class LottoGame {
         ConsoleOutput.showLottoTickets(lotto.getLottoTickets());
 
         List<Integer> winningNumbers = ConsoleInput.inputWinningLottoNumber();
-        MatchResult matchResult = lotto.match(WinningLotto.init(winningNumbers));
+        MatchResult matchResult = lotto.match(WinningNumbers.init(winningNumbers));
 
         ConsoleOutput.showMatchResult(matchResult);
     }

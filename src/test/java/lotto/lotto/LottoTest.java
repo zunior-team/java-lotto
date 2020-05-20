@@ -39,10 +39,10 @@ class LottoTest {
     @DisplayName("당첨번호와 매치")
     void match() {
         final int payment = 10000;
-        final WinningLotto winningLotto = Generator.winningLotto(1, 2, 3, 4, 5, 6);
+        final WinningNumbers winningNumbers = Generator.winningLotto(1, 2, 3, 4, 5, 6);
 
         Lotto lotto = LottoSeller.buy(payment);
-        MatchResult matchResult = lotto.match(winningLotto);
+        MatchResult matchResult = lotto.match(winningNumbers);
 
         assertThat(matchResult.getPayment()).isEqualTo(payment);
 

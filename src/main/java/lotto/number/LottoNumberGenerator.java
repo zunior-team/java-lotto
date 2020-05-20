@@ -27,7 +27,7 @@ public class LottoNumberGenerator {
         return Collections.unmodifiableList(extractLottoNumbers(numberPool));
     }
 
-    private static List<LottoNumber> extractLottoNumbers(List<LottoNumber> numberPool) {
+    private static List<LottoNumber> extractLottoNumbers(final List<LottoNumber> numberPool) {
         List<LottoNumber> newLottoNumbers = numberPool.subList(BASE_INDEX, NUM_OF_LOTTO_NUM);
 
         Collections.sort(newLottoNumbers);

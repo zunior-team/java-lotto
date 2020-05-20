@@ -34,7 +34,7 @@ public class ConsoleOutput {
         System.out.println(String.format(EARNINGS_RATE_FORMAT, calculateEarnings(matchResult)));
     }
 
-    private static Double calculateEarnings(MatchResult matchResult) {
+    private static Double calculateEarnings(final MatchResult matchResult) {
         double sum = Arrays.stream(LottoPrize.values())
                 .mapToDouble(lottoPrize -> (double) lottoPrize.getPrizeMoney() * matchResult.count(lottoPrize))
                 .sum();

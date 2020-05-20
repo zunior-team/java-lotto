@@ -45,21 +45,21 @@ public class LottoTicketTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("로또 티켓과 당첨 번호간의 매치후 당첨 타입 찾기")
-    void matchPrize(final LottoTicket lottoTicket, final WinningLotto winningLotto, final LottoPrize lottoPrize) {
-        assertThat(lottoTicket.matchPrize(winningLotto)).isEqualByComparingTo(lottoPrize);
+    void matchPrize(final LottoTicket lottoTicket, final WinningNumbers winningNumbers, final LottoPrize lottoPrize) {
+        assertThat(lottoTicket.matchPrize(winningNumbers)).isEqualByComparingTo(lottoPrize);
     }
 
     private static Stream<Arguments> matchPrize() {
-        final WinningLotto winningLotto = Generator.winningLotto(1, 2, 3, 4, 5, 6);
+        final WinningNumbers winningNumbers = Generator.winningLotto(1, 2, 3, 4, 5, 6);
 
         return Stream.of(
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 6), winningLotto, LottoPrize.FIRST),
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 7), winningLotto, LottoPrize.SECOND),
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 7, 8), winningLotto, LottoPrize.THIRD),
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 7, 8, 9), winningLotto, LottoPrize.FOURTH),
-                Arguments.of(Generator.lottoTicket(1, 2, 7, 8, 9, 10), winningLotto, LottoPrize.NONE),
-                Arguments.of(Generator.lottoTicket(1, 7, 8, 9, 10, 11), winningLotto, LottoPrize.NONE),
-                Arguments.of(Generator.lottoTicket(7, 8, 9, 10, 11, 12), winningLotto, LottoPrize.NONE)
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 6), winningNumbers, LottoPrize.FIRST),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 7), winningNumbers, LottoPrize.SECOND),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 7, 8), winningNumbers, LottoPrize.THIRD),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 7, 8, 9), winningNumbers, LottoPrize.FOURTH),
+                Arguments.of(Generator.lottoTicket(1, 2, 7, 8, 9, 10), winningNumbers, LottoPrize.NONE),
+                Arguments.of(Generator.lottoTicket(1, 7, 8, 9, 10, 11), winningNumbers, LottoPrize.NONE),
+                Arguments.of(Generator.lottoTicket(7, 8, 9, 10, 11, 12), winningNumbers, LottoPrize.NONE)
         );
     }
 }

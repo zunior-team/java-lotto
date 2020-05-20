@@ -31,12 +31,12 @@ public class LottoNumber implements Comparable<LottoNumber> {
     }
 
     @Override
-    public int compareTo(LottoNumber anotherLottoNumber) {
+    public int compareTo(final LottoNumber anotherLottoNumber) {
         return this.number - anotherLottoNumber.number;
     }
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         LottoNumber that = (LottoNumber) o;

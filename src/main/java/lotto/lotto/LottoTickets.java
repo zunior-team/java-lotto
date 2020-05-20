@@ -33,9 +33,9 @@ public class LottoTickets {
                 .collect(Collectors.toList());
     }
 
-    public Map<LottoPrize, Long> matchLottoNumbers(WinningLotto winningLotto) {
+    public Map<LottoPrize, Long> matchLottoNumbers(final WinningNumbers winningNumbers) {
         return lottoTickets.stream()
-                .map(lottoTicket -> lottoTicket.matchPrize(winningLotto))
+                .map(lottoTicket -> lottoTicket.matchPrize(winningNumbers))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
 }

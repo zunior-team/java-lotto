@@ -40,13 +40,13 @@ public class LottoNumbers {
         return new LottoNumbers(LottoNumberGenerator.generate());
     }
 
-    public int matchCount(LottoNumbers anotherLottoNumbers) {
+    public int matchCount(final LottoNumbers anotherLottoNumbers) {
         return (int) lottoNumbers.stream()
                 .filter(anotherLottoNumbers::contains)
                 .count();
     }
 
-    private boolean contains(LottoNumber lottoNumber) {
+    private boolean contains(final LottoNumber lottoNumber) {
         return lottoNumbers.stream()
                 .anyMatch(lottoNumber::equals);
     }
