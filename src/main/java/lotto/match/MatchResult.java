@@ -1,7 +1,8 @@
-package lotto.dto;
+package lotto.match;
 
 import lotto.prize.LottoPrize;
 
+import java.util.Arrays;
 import java.util.Map;
 
 public class MatchResult {
@@ -19,11 +20,15 @@ public class MatchResult {
         return new MatchResult(payment, matchResult);
     }
 
-    public int getPayment() {
-        return payment;
+    public double calculateEarningRate() {
+        double earningSum = Arrays.stream(LottoPrize.values())
+                .mapToDouble(lottoPrize -> (double) lottoPrize.getPrizeMoney() * matchCount(lottoPrize))
+                .sum();
+
+        return earningSum / payment;
     }
 
-    public Long count(final LottoPrize lottoPrize) {
+    public Long matchCount(final LottoPrize lottoPrize) {
         return matchResult.getOrDefault(lottoPrize, DEFAULT_COUNT);
     }
 }

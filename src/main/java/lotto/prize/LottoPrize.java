@@ -1,6 +1,7 @@
 package lotto.prize;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -29,6 +30,14 @@ public enum LottoPrize {
         }
 
         return PRIZES.get(matchCount);
+    }
+
+    public static List<LottoPrize> getMeaningfulPrize() {
+        List<LottoPrize> lottoPrizes = Arrays.asList(LottoPrize.values());
+
+        lottoPrizes.remove(NONE);
+
+        return lottoPrizes;
     }
 
     public int getMatchCount() {

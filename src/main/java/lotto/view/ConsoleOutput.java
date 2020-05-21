@@ -1,7 +1,7 @@
 package lotto.view;
 
 import lotto.dto.LottoTicketDto;
-import lotto.dto.MatchResult;
+import lotto.match.MatchResult;
 import lotto.prize.LottoPrize;
 
 import java.util.Arrays;
@@ -28,18 +28,10 @@ public class ConsoleOutput {
     public static void showMatchResult(final MatchResult matchResult) {
         System.out.println(WIN_PRIZE_STATISTICS_STATEMENT);
 
-        Arrays.stream(extractMeaningfulPrize())
+        LottoPrize.getMeaningfulPrize()
                 .forEach(lottoPrize -> showPrizeResult(lottoPrize, matchResult));
 
-        System.out.println(String.format(EARNINGS_RATE_FORMAT, calculateEarnings(matchResult)));
-    }
-
-    private static Double calculateEarnings(final MatchResult matchResult) {
-        double sum = Arrays.stream(LottoPrize.values())
-                .mapToDouble(lottoPrize -> (double) lottoPrize.getPrizeMoney() * matchResult.count(lottoPrize))
-                .sum();
-
-        return sum / matchResult.getPayment();
+        System.out.println(String.format(EARNINGS_RATE_FORMAT, matchResult.calculateEarningRate()));
     }
 
     private static void showPrizeResult(final LottoPrize lottoPrize, final MatchResult matchResult) {
@@ -47,15 +39,9 @@ public class ConsoleOutput {
                 LOTTO_PRIZE_SUMMARY_FORMAT,
                 lottoPrize.getMatchCount(),
                 lottoPrize.getPrizeMoney(),
-                matchResult.count(lottoPrize)
+                matchResult.matchCount(lottoPrize)
         );
 
         System.out.println(summary);
-    }
-
-    private static LottoPrize[] extractMeaningfulPrize() {
-        LottoPrize[] lottoPrizes = LottoPrize.values();
-
-        return Arrays.copyOf(lottoPrizes, lottoPrizes.length - 1);
     }
 }

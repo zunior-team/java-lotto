@@ -1,6 +1,6 @@
 package lotto.lotto;
 
-import lotto.dto.MatchResult;
+import lotto.match.MatchResult;
 import lotto.prize.LottoPrize;
 import lotto.util.Generator;
 import org.junit.jupiter.api.DisplayName;
@@ -44,13 +44,11 @@ class LottoTest {
         Lotto lotto = LottoSeller.buy(payment);
         MatchResult matchResult = lotto.match(winningNumbers);
 
-        assertThat(matchResult.getPayment()).isEqualTo(payment);
-
-        long sum = Arrays.stream(LottoPrize.values())
-                .mapToLong(matchResult::count)
+        long matchCount = Arrays.stream(LottoPrize.values())
+                .mapToLong(matchResult::matchCount)
                 .sum();
 
-        assertThat(sum).isEqualTo(payment / LottoSeller.PRICE_OF_A_TICKET);
+        assertThat(matchCount).isEqualTo(payment / LottoSeller.PRICE_OF_A_TICKET);
     }
 
     @Test

@@ -1,7 +1,7 @@
 package lotto.lotto;
 
 import lotto.dto.LottoTicketDto;
-import lotto.dto.MatchResult;
+import lotto.match.MatchResult;
 import lotto.prize.LottoPrize;
 
 import java.util.List;
