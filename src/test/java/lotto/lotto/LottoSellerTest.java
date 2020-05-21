@@ -3,8 +3,10 @@ package lotto.lotto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 @DisplayName("로또를 파는 객체에 대한 테스트")
 public class LottoSellerTest {
@@ -15,5 +17,13 @@ public class LottoSellerTest {
         Lotto lotto = LottoSeller.buy(money);
 
         assertThat(lotto.getLottoTickets()).hasSize(expected);
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = {-1, 0})
+    @DisplayName("잘못된 지불금액을 받았을때 예외 발생")
+    void buyFail(final int payment) {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> LottoSeller.buy(payment));
     }
 }
