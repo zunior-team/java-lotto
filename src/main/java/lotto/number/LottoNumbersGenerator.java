@@ -10,14 +10,14 @@ import static lotto.number.LottoNumber.MAX_NUM_OF_LOTTO;
 import static lotto.number.LottoNumber.MIN_NUM_OF_LOTTO;
 import static lotto.number.LottoNumbers.NUM_OF_LOTTO_NUM;
 
-public class LottoNumberGenerator {
+public class LottoNumbersGenerator {
     static final int BASE_INDEX = 0;
     private static final List<LottoNumber> LOTTO_NUMBERS =
             IntStream.rangeClosed(MIN_NUM_OF_LOTTO, MAX_NUM_OF_LOTTO)
                     .mapToObj(LottoNumber::of)
                     .collect(Collectors.toList());
 
-    private LottoNumberGenerator() {}
+    private LottoNumbersGenerator() {}
 
     public static List<LottoNumber> generate() {
         List<LottoNumber> numberPool = createNumberPool();

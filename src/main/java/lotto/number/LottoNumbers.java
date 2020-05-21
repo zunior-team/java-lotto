@@ -38,7 +38,7 @@ public class LottoNumbers {
     }
 
     public static LottoNumbers auto() {
-        return new LottoNumbers(LottoNumberGenerator.generate());
+        return new LottoNumbers(LottoNumbersGenerator.generate());
     }
 
     public int matchCount(final LottoNumbers anotherLottoNumbers) {
