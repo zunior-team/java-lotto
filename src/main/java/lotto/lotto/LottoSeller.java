@@ -15,12 +15,12 @@ public class LottoSeller {
     public static Lotto buy(final int payment) {
         validate(payment);
 
-        LottoTickets lottoTickets = LottoTickets.init(buyAutoLotto(payment));
+        LottoTickets lottoTickets = LottoTickets.init(buyAutoLottoTickets(payment));
 
         return Lotto.init(payment, lottoTickets);
     }
 
-    private static List<LottoTicket> buyAutoLotto(final int payment) {
+    private static List<LottoTicket> buyAutoLottoTickets(final int payment) {
         return Stream.generate(LottoSeller::generateAuto)
                     .limit(payment / PRICE_OF_A_TICKET)
                     .collect(Collectors.toList());
