@@ -1,6 +1,7 @@
 package lotto.number;
 
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -8,12 +9,12 @@ import java.util.stream.Collectors;
 public class LottoNumbers {
     static final int NUM_OF_LOTTO_NUM = 6;
 
-    private final List<LottoNumber> lottoNumbers;
+    private final Set<LottoNumber> lottoNumbers;
 
     private LottoNumbers(final List<LottoNumber> lottoNumbers) {
         validate(lottoNumbers);
 
-        this.lottoNumbers = lottoNumbers;
+        this.lottoNumbers = new LinkedHashSet<>(lottoNumbers);
     }
 
     private void validate(final List<LottoNumber> lottoNumbers) {
@@ -41,9 +42,11 @@ public class LottoNumbers {
     }
 
     public int matchCount(final LottoNumbers anotherLottoNumbers) {
-        return (int) lottoNumbers.stream()
+        return Math.toIntExact(
+                lottoNumbers.stream()
                 .filter(anotherLottoNumbers::contains)
-                .count();
+                .count()
+        );
     }
 
     private boolean contains(final LottoNumber lottoNumber) {
