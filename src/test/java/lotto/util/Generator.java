@@ -10,6 +10,8 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static lotto.number.LottoNumbers.NUM_OF_LOTTO_NUM;
+
 public class Generator {
 
     private Generator() {}
@@ -29,7 +31,12 @@ public class Generator {
     }
 
     public static WinningNumbers winningLotto(final int... numbers) {
-        return WinningNumbers.init(lottoNumbers(numbers));
+        int[] numberArray = numbers.clone();
+
+        return WinningNumbers.init(
+                lottoNumbers(Arrays.copyOf(numberArray, NUM_OF_LOTTO_NUM)),
+                LottoNumber.of(numberArray[NUM_OF_LOTTO_NUM])
+        );
     }
 
     public static LottoTickets lottoTickets(final LottoTicket... lottoTickets) {

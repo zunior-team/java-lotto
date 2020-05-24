@@ -89,7 +89,7 @@ public class LottoNumbersTest {
     private static Stream<Arguments> contains() {
         return Stream.of(
                 Arguments.of(LottoNumber.of(1), true),
-                Arguments.of(LottoNumber.of(7), true)
+                Arguments.of(LottoNumber.of(7), false)
         );
     }
 }

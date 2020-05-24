@@ -59,7 +59,7 @@ public class LottoTicketTest {
         return Stream.of(
                 Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 6), winningNumbers, LottoPrize.FIRST),
                 Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 7), winningNumbers, LottoPrize.SECOND),
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 6), winningNumbers, LottoPrize.THIRD),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 8), winningNumbers, LottoPrize.THIRD),
                 Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 7, 8), winningNumbers, LottoPrize.FOURTH),
                 Arguments.of(Generator.lottoTicket(1, 2, 3, 7, 8, 9), winningNumbers, LottoPrize.FIFTH),
                 Arguments.of(Generator.lottoTicket(1, 2, 7, 8, 9, 10), winningNumbers, LottoPrize.NONE),

@@ -22,13 +22,19 @@ public class LottoPrizeTest {
     private static Stream<Arguments> match() {
         return Stream.of(
                 Arguments.of(6, false, LottoPrize.FIRST),
+                Arguments.of(6, true, LottoPrize.FIRST),
                 Arguments.of(5, true, LottoPrize.SECOND),
                 Arguments.of(5, false, LottoPrize.THIRD),
                 Arguments.of(4, false, LottoPrize.FOURTH),
+                Arguments.of(4, true, LottoPrize.FOURTH),
                 Arguments.of(3, false, LottoPrize.FIFTH),
-                Arguments.of(2, LottoPrize.NONE),
-                Arguments.of(1, LottoPrize.NONE),
-                Arguments.of(0, LottoPrize.NONE)
+                Arguments.of(3, true, LottoPrize.FIFTH),
+                Arguments.of(2, false, LottoPrize.NONE),
+                Arguments.of(2, true, LottoPrize.NONE),
+                Arguments.of(1, false, LottoPrize.NONE),
+                Arguments.of(1, true, LottoPrize.NONE),
+                Arguments.of(0, false, LottoPrize.NONE),
+                Arguments.of(0, true, LottoPrize.NONE)
         );
     }
 }

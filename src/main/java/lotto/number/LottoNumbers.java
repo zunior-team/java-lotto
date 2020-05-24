@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoNumbers {
-    static final int NUM_OF_LOTTO_NUM = 6;
+    public static final int NUM_OF_LOTTO_NUM = 6;
 
     private final Set<LottoNumber> lottoNumbers;
 
