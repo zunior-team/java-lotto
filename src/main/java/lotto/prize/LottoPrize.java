@@ -8,16 +8,17 @@ import java.util.stream.Collectors;
 
 public enum LottoPrize {
     FIRST(6, 2_000_000_000),
-    SECOND(5, 1_500_000),
-    THIRD(4, 50_000),
-    FOURTH(3, 5_000),
+    SECOND(5, 30_000_000),
+    THIRD(5, 1_500_000),
+    FOURTH(4, 50_000),
+    FIFTH(3, 5_000),
     NONE(0, 0);
 
     private final int matchCount;
     private final int prizeMoney;
 
     private static final Map<Integer, LottoPrize> PRIZES = Arrays.stream(LottoPrize.values())
-            .collect(Collectors.toMap(LottoPrize::getMatchCount, Function.identity()));
+            .collect(Collectors.toMap(LottoPrize::getMatchCount, Function.identity(), ((pre, post) -> post)));
 
     LottoPrize(final int matchCount, final int prizeMoney) {
         this.matchCount = matchCount;
@@ -25,7 +26,9 @@ public enum LottoPrize {
     }
 
     public static LottoPrize of(final int matchCount) {
-        return PRIZES.getOrDefault(matchCount, NONE);
+        LottoPrize prize = PRIZES.getOrDefault(matchCount, NONE);
+
+        return prize;
     }
 
     public static List<LottoPrize> getMeaningfulPrize() {

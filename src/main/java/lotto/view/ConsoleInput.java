@@ -9,6 +9,7 @@ public class ConsoleInput {
     private static final String SPLITTER = ",";
     private static final String INPUT_PAYMENT_STATEMENT = "구입금액을 입력해 주세요.";
     private static final String INPUT_WINNING_NUMBER_STATEMENT = "지난 주 당첨 번호를 입력해 주세요.";
+    private static final String INPUT_BONUS_BALL_STATEMENT = "보너스 볼을 입력해 주세요.";
 
     private static final Scanner SCANNER = new Scanner(System.in);
 
@@ -34,5 +35,11 @@ public class ConsoleInput {
                 .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    public static int inputBonusNumber() {
+        System.out.println(INPUT_BONUS_BALL_STATEMENT);
+
+        return receiveInt();
     }
 }
