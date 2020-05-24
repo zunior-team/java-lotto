@@ -23,7 +23,7 @@ class LottoTest {
                 Generator.lottoTicket(1, 2, 3, 4, 5, 6)
         );
 
-        assertThatCode(() -> Lotto.init(1000, lottoTickets))
+        assertThatCode(() -> Lotto.init(Generator.paymentInfo(1000), lottoTickets))
                 .doesNotThrowAnyException();
     }
 
@@ -31,7 +31,8 @@ class LottoTest {
     @NullSource
     @DisplayName("초기화 실패 테스트")
     void initFail(final LottoTickets lottoTickets) {
-        assertThatIllegalArgumentException().isThrownBy(() -> Lotto.init(1000, lottoTickets));
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> Lotto.init(Generator.paymentInfo(1000), lottoTickets));
 
     }
 
@@ -41,22 +42,22 @@ class LottoTest {
         final int payment = 10000;
         final WinningNumbers winningNumbers = Generator.winningLotto(1, 2, 3, 4, 5, 6, 7);
 
-        Lotto lotto = LottoSeller.buy(payment);
+        Lotto lotto = LottoSeller.buy(Generator.paymentInfo(payment));
         MatchResult matchResult = lotto.match(winningNumbers);
 
         long matchCount = Arrays.stream(LottoPrize.values())
                 .mapToLong(matchResult::matchCount)
                 .sum();
 
-        assertThat(matchCount).isEqualTo(payment / LottoSeller.PRICE_OF_A_TICKET);
+        assertThat(matchCount).isEqualTo(payment / LottoSeller.PRICE_OF_A_TICKET_VALUE);
     }
 
     @Test
     @DisplayName("구매한 로또 가져오기 가져오기")
     void getLottoTickets() {
         final int payment = 10000;
-        Lotto lotto = LottoSeller.buy(payment);
+        Lotto lotto = LottoSeller.buy(Generator.paymentInfo(payment));
 
-        assertThat(lotto.getLottoTickets()).hasSize(payment / LottoSeller.PRICE_OF_A_TICKET);
+        assertThat(lotto.getLottoTickets()).hasSize(payment / LottoSeller.PRICE_OF_A_TICKET_VALUE);
     }
 }

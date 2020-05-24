@@ -37,6 +37,14 @@ public class LottoNumbers {
         return new LottoNumbers(lottoNumbers);
     }
 
+    public static LottoNumbers manual(final List<Integer> intNumbers) {
+        List<LottoNumber> lottoNumbers = intNumbers.stream()
+                .map(LottoNumber::of)
+                .collect(Collectors.toList());
+
+        return new LottoNumbers(lottoNumbers);
+    }
+
     public static LottoNumbers auto() {
         return new LottoNumbers(LottoNumbersGenerator.generate());
     }
@@ -44,8 +52,8 @@ public class LottoNumbers {
     public int matchCount(final LottoNumbers anotherLottoNumbers) {
         return Math.toIntExact(
                 lottoNumbers.stream()
-                .filter(anotherLottoNumbers::contains)
-                .count()
+                        .filter(anotherLottoNumbers::contains)
+                        .count()
         );
     }
 
