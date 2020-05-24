@@ -76,4 +76,20 @@ public class LottoNumbersTest {
                 Arguments.of(Generator.lottoNumbers(7, 8, 9, 10, 11, 12), winningLottoNumbers, 0)
         );
     }
+
+    @ParameterizedTest
+    @MethodSource
+    @DisplayName("번호를 포함하고 있는지 테스트")
+    void contains(final LottoNumber bonusNumber, final boolean expected) {
+        LottoNumbers lottoNumbers = Generator.lottoNumbers(1, 2, 3, 4, 5, 6);
+
+        assertThat(lottoNumbers.contains(bonusNumber)).isEqualTo(expected);
+    }
+
+    private static Stream<Arguments> contains() {
+        return Stream.of(
+                Arguments.of(LottoNumber.of(1), true),
+                Arguments.of(LottoNumber.of(7), true)
+        );
+    }
 }

@@ -15,16 +15,17 @@ public class LottoPrizeTest {
     @ParameterizedTest
     @MethodSource
     @DisplayName("매치되는 개수별 등수 테스트")
-    void match(final int matchCount, final LottoPrize expected) {
-        assertThat(LottoPrize.of(matchCount)).isEqualTo(expected);
+    void match(final int matchCount, final boolean isBonusMatch, final LottoPrize expected) {
+        assertThat(LottoPrize.of(matchCount, isBonusMatch)).isEqualTo(expected);
     }
 
     private static Stream<Arguments> match() {
         return Stream.of(
-                Arguments.of(6, LottoPrize.FIRST),
-                Arguments.of(5, LottoPrize.SECOND),
-                Arguments.of(4, LottoPrize.THIRD),
-                Arguments.of(3, LottoPrize.FOURTH),
+                Arguments.of(6, false, LottoPrize.FIRST),
+                Arguments.of(5, true, LottoPrize.SECOND),
+                Arguments.of(5, false, LottoPrize.THIRD),
+                Arguments.of(4, false, LottoPrize.FOURTH),
+                Arguments.of(3, false, LottoPrize.FIFTH),
                 Arguments.of(2, LottoPrize.NONE),
                 Arguments.of(1, LottoPrize.NONE),
                 Arguments.of(0, LottoPrize.NONE)

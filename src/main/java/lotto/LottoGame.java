@@ -17,7 +17,8 @@ public class LottoGame {
         ConsoleOutput.showLottoTickets(lotto.getLottoTickets());
 
         List<Integer> winningNumbers = ConsoleInput.inputWinningLottoNumber();
-        MatchResult matchResult = lotto.match(WinningNumbers.init(winningNumbers));
+        int bonusNumber = ConsoleInput.inputBonusNumber();
+        MatchResult matchResult = lotto.match(WinningNumbers.init(winningNumbers, bonusNumber));
 
         ConsoleOutput.showMatchResult(matchResult);
     }

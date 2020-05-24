@@ -49,7 +49,7 @@ public class LottoNumbers {
         );
     }
 
-    private boolean contains(final LottoNumber lottoNumber) {
+    public boolean contains(final LottoNumber lottoNumber) {
         return lottoNumbers.stream()
                 .anyMatch(lottoNumber::equals);
     }

@@ -1,10 +1,12 @@
 package lotto.prize;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public enum LottoPrize {
     FIRST(6, 2_000_000_000),
@@ -17,16 +19,22 @@ public enum LottoPrize {
     private final int matchCount;
     private final int prizeMoney;
 
-    private static final Map<Integer, LottoPrize> PRIZES = Arrays.stream(LottoPrize.values())
-            .collect(Collectors.toMap(LottoPrize::getMatchCount, Function.identity(), ((pre, post) -> post)));
+    private static final Map<Integer, LottoPrize> PRIZES = Collections.unmodifiableMap(
+            Stream.of(values())
+                    .collect(Collectors.toMap(LottoPrize::getMatchCount, Function.identity(), ((pre, post) -> post)))
+    );
 
     LottoPrize(final int matchCount, final int prizeMoney) {
         this.matchCount = matchCount;
         this.prizeMoney = prizeMoney;
     }
 
-    public static LottoPrize of(final int matchCount) {
+    public static LottoPrize of(final int matchCount, final boolean isBonusMatch) {
         LottoPrize prize = PRIZES.getOrDefault(matchCount, NONE);
+
+        if (prize == THIRD && isBonusMatch) {
+            return SECOND;
+        }
 
         return prize;
     }
