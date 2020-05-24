@@ -11,6 +11,7 @@ public class ConsoleOutput {
     private static final String BUY_INFO_FORMAT = "%d개를 구매했습니다.";
     private static final String WIN_PRIZE_STATISTICS_STATEMENT = "당첨 통계\n----------";
     private static final String LOTTO_PRIZE_SUMMARY_FORMAT = "%d개 일치 (%d원) - %d개";
+    private static final String LOTTO_SECOND_PRIZE_SUMMARY_FORMAT = "%d개 일치, 보너스 볼 일치(%d원) - %d개";
     private static final String EARNINGS_RATE_FORMAT = "총 수익률은 %.2f입니다.(기준이 1이기 때문에 결과적으로 손해라는 의미임)";
 
     private ConsoleOutput() {}
@@ -35,8 +36,13 @@ public class ConsoleOutput {
     }
 
     private static void showPrizeResult(final LottoPrize lottoPrize, final MatchResult matchResult) {
+        String summaryFormat = lottoPrize == LottoPrize.SECOND ?
+                LOTTO_SECOND_PRIZE_SUMMARY_FORMAT :
+                LOTTO_PRIZE_SUMMARY_FORMAT;
+
+
         String summary = String.format(
-                LOTTO_PRIZE_SUMMARY_FORMAT,
+                summaryFormat,
                 lottoPrize.getMatchCount(),
                 lottoPrize.getPrizeMoney(),
                 matchResult.matchCount(lottoPrize)
