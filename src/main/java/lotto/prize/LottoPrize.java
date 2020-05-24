@@ -25,11 +25,7 @@ public enum LottoPrize {
     }
 
     public static LottoPrize of(final int matchCount) {
-        if (!PRIZES.containsKey(matchCount)) {
-            return NONE;
-        }
-
-        return PRIZES.get(matchCount);
+        return PRIZES.getOrDefault(matchCount, NONE);
     }
 
     public static List<LottoPrize> getMeaningfulPrize() {
