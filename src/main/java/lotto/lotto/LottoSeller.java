@@ -1,5 +1,7 @@
 package lotto.lotto;
 
+import lotto.money.Money;
+import lotto.money.PaymentInfo;
 import lotto.number.LottoNumbers;
 
 import java.util.List;
@@ -7,29 +9,28 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class LottoSeller {
-    static final int PRICE_OF_A_TICKET = 1000;
-    private static final int ZERO = 0;
+    public static final int PRICE_OF_A_TICKET_VALUE = 1000;
+    public static final Money PRICE_OF_A_TICKET = Money.of(PRICE_OF_A_TICKET_VALUE);
 
     private LottoSeller() {}
 
-    public static Lotto buy(final int payment) {
-        validate(payment);
+    public static Lotto buy(final PaymentInfo paymentInfo) {
+        LottoTickets manualTickets = LottoTickets.init(buyManualLottoTickets(paymentInfo.getLottoNumbers()));
+        LottoTickets autoTickets = LottoTickets.init(buyAutoLottoTickets(paymentInfo.getPayment()));
 
-        LottoTickets lottoTickets = LottoTickets.init(buyAutoLottoTickets(payment));
-
-        return Lotto.init(payment, lottoTickets);
+        return Lotto.init(paymentInfo, manualTickets.addTickets(autoTickets));
     }
 
-    private static List<LottoTicket> buyAutoLottoTickets(final int payment) {
+    private static List<LottoTicket> buyAutoLottoTickets(final Money payment) {
         return Stream.generate(LottoSeller::generateAuto)
-                    .limit(payment / PRICE_OF_A_TICKET)
-                    .collect(Collectors.toList());
+                .limit(payment.getAffordableCount(PRICE_OF_A_TICKET))
+                .collect(Collectors.toList());
     }
 
-    private static void validate(final int payment) {
-        if (payment <= ZERO) {
-            throw new IllegalArgumentException("Payment must be a positive number");
-        }
+    private static List<LottoTicket> buyManualLottoTickets(final List<LottoNumbers> lottoNumbers) {
+        return lottoNumbers.stream()
+                .map(LottoTicket::init)
+                .collect(Collectors.toList());
     }
 
     private static LottoTicket generateAuto() {
