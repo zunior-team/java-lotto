@@ -31,6 +31,10 @@ public class Generator {
     }
 
     public static WinningNumbers winningLotto(final int... numbers) {
+        if (numbers.length < NUM_OF_LOTTO_NUM + 1) {
+            throw new IllegalArgumentException("Winning lotto numbers should exact " + NUM_OF_LOTTO_NUM + 1);
+        }
+
         int[] numberArray = numbers.clone();
 
         return WinningNumbers.init(
