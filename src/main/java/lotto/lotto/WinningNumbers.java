@@ -6,16 +6,17 @@ import lotto.number.LottoNumbers;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class WinningNumbers extends LottoTicket {
+public class WinningNumbers {
 
+    private final LottoNumbers lottoNumbers;
     private final LottoNumber bonusNumber;
 
     private WinningNumbers(final LottoNumbers lottoNumbers, final LottoNumber bonusNumber) {
-        super(lottoNumbers);
-
+        validate(lottoNumbers);
         validate(bonusNumber);
-        checkDuplication(bonusNumber);
+        this.lottoNumbers = lottoNumbers;
         this.bonusNumber = bonusNumber;
+        checkDuplication(bonusNumber);
     }
 
     private void checkDuplication(final LottoNumber bonusNumber) {
@@ -46,5 +47,9 @@ public class WinningNumbers extends LottoTicket {
 
     public boolean isBonusMatch(LottoNumbers lottoNumbers) {
         return lottoNumbers.contains(bonusNumber);
+    }
+
+    public LottoNumbers getLottoNumber() {
+        return lottoNumbers;
     }
 }
