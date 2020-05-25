@@ -38,7 +38,7 @@ public class WinningNumbers extends LottoTicket {
         return new WinningNumbers(LottoNumbers.init(numbers), LottoNumber.of(bonusNumber));
     }
 
-    private static void validate(Object object) {
+    private static <T> void validate(T object) {
         if (object == null) {
             throw new IllegalArgumentException("Lotto number or number list is null");
         }
