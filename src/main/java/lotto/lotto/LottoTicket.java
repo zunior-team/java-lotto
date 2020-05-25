@@ -29,8 +29,9 @@ public class LottoTicket {
     }
 
     public LottoPrize matchPrize(final WinningNumbers winningNumbers) {
-        int matchCount = lottoNumbers.matchCount(winningNumbers.lottoNumbers);
+        int matchCount = lottoNumbers.matchCount(winningNumbers.getLottoNumber());
+        boolean isBonusMatch = winningNumbers.isBonusMatch(lottoNumbers);
 
-        return LottoPrize.of(matchCount);
+        return LottoPrize.of(matchCount, isBonusMatch);
     }
 }

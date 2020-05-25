@@ -1,5 +1,6 @@
 package lotto.lotto;
 
+import lotto.number.LottoNumber;
 import lotto.number.LottoNumbers;
 import lotto.prize.LottoPrize;
 import lotto.util.Generator;
@@ -50,13 +51,17 @@ public class LottoTicketTest {
     }
 
     private static Stream<Arguments> matchPrize() {
-        final WinningNumbers winningNumbers = Generator.winningLotto(1, 2, 3, 4, 5, 6);
+        final WinningNumbers winningNumbers = WinningNumbers.init(
+                Generator.lottoNumbers(1, 2, 3, 4, 5, 6),
+                LottoNumber.of(7)
+        );
 
         return Stream.of(
                 Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 6), winningNumbers, LottoPrize.FIRST),
                 Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 7), winningNumbers, LottoPrize.SECOND),
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 7, 8), winningNumbers, LottoPrize.THIRD),
-                Arguments.of(Generator.lottoTicket(1, 2, 3, 7, 8, 9), winningNumbers, LottoPrize.FOURTH),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 5, 8), winningNumbers, LottoPrize.THIRD),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 4, 7, 8), winningNumbers, LottoPrize.FOURTH),
+                Arguments.of(Generator.lottoTicket(1, 2, 3, 7, 8, 9), winningNumbers, LottoPrize.FIFTH),
                 Arguments.of(Generator.lottoTicket(1, 2, 7, 8, 9, 10), winningNumbers, LottoPrize.NONE),
                 Arguments.of(Generator.lottoTicket(1, 7, 8, 9, 10, 11), winningNumbers, LottoPrize.NONE),
                 Arguments.of(Generator.lottoTicket(7, 8, 9, 10, 11, 12), winningNumbers, LottoPrize.NONE)

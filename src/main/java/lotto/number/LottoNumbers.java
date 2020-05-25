@@ -7,7 +7,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class LottoNumbers {
-    static final int NUM_OF_LOTTO_NUM = 6;
+    public static final int NUM_OF_LOTTO_NUM = 6;
 
     private final Set<LottoNumber> lottoNumbers;
 
@@ -49,7 +49,7 @@ public class LottoNumbers {
         );
     }
 
-    private boolean contains(final LottoNumber lottoNumber) {
+    public boolean contains(final LottoNumber lottoNumber) {
         return lottoNumbers.stream()
                 .anyMatch(lottoNumber::equals);
     }
