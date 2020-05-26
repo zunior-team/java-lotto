@@ -16,7 +16,7 @@ public class LottoSeller {
 
     public static Lotto buy(final PaymentInfo paymentInfo) {
         LottoTickets manualTickets = LottoTickets.init(buyManualLottoTickets(paymentInfo.getLottoNumbers()));
-        LottoTickets autoTickets = LottoTickets.init(buyAutoLottoTickets(paymentInfo.getPayment()));
+        LottoTickets autoTickets = LottoTickets.init(buyAutoLottoTickets(paymentInfo.getChange()));
 
         return Lotto.init(paymentInfo, manualTickets.addTickets(autoTickets));
     }

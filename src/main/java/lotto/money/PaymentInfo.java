@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import static lotto.lotto.LottoSeller.PRICE_OF_A_TICKET;
+import static lotto.lotto.LottoSeller.PRICE_OF_A_TICKET_VALUE;
 
 public class PaymentInfo {
     private final Money payment;
@@ -39,6 +40,10 @@ public class PaymentInfo {
 
     public Money getPayment() {
         return payment;
+    }
+
+    public Money getChange() {
+        return payment.sub(Money.of(lottoNumbers.size() * PRICE_OF_A_TICKET_VALUE));
     }
 
     public List<LottoNumbers> getLottoNumbers() {

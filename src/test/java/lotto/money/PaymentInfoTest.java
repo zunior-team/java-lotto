@@ -11,8 +11,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.assertThatCode;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
+import static org.assertj.core.api.Assertions.*;
 
 @DisplayName("구입 정보에 대한 테스트")
 class PaymentInfoTest {
@@ -56,5 +55,16 @@ class PaymentInfoTest {
 
         assertThatIllegalArgumentException()
                 .isThrownBy(() -> PaymentInfo.init(MONEY_2000, lottoNumbers));
+    }
+
+    @Test
+    @DisplayName("잔돈 구하기 테스트")
+    void getChange() {
+        List<List<Integer>> lottoNumbers = Collections.singletonList(
+                Arrays.asList(1, 2, 3, 4, 5, 6)
+        );
+
+        PaymentInfo paymentInfo = PaymentInfo.init(MONEY_2000, lottoNumbers);
+        assertThat(paymentInfo.getChange()).isEqualTo(Money.of(1000));
     }
 }
