@@ -28,6 +28,10 @@ public class Money {
         return new Money(this.money + anotherMoney.money);
     }
 
+    public Money sub(final Money anotherMoney) {
+        return new Money(this.money - anotherMoney.money);
+    }
+
     public int getAffordableCount(final Money price) {
         return this.money / price.money;
     }

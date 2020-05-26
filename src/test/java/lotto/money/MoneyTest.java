@@ -46,6 +46,19 @@ class MoneyTest {
     }
 
     @Test
+    @DisplayName("뺄셈 테스트")
+    void sub() {
+        assertThat(MONEY_1000.sub(MONEY_500)).isEqualTo(MONEY_500);
+    }
+
+    @Test
+    @DisplayName("뺄셈 음수로 인한 예외 테스트")
+    void subException() {
+        assertThatIllegalArgumentException()
+                .isThrownBy(() -> MONEY_500.sub(MONEY_1000));
+    }
+
+    @Test
     @DisplayName("구입 가능 개수 테스트")
     void affordable() {
         assertThat(MONEY_1000.getAffordableCount(MONEY_100)).isEqualTo(10);
