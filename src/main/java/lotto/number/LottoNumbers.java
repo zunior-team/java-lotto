@@ -18,7 +18,7 @@ public class LottoNumbers {
     }
 
     private void validate(final List<LottoNumber> lottoNumbers) {
-        if (lottoNumbers == null || lottoNumbers.size() < NUM_OF_LOTTO_NUM) {
+        if (lottoNumbers == null || lottoNumbers.size() != NUM_OF_LOTTO_NUM) {
             throw new IllegalArgumentException("Lotto number must be a " + NUM_OF_LOTTO_NUM);
         }
 
