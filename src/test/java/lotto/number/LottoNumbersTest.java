@@ -43,7 +43,8 @@ public class LottoNumbersTest {
                 Arguments.of((Object) null),
                 Arguments.of(Collections.emptyList()),
                 Arguments.of(Generator.lottoNumberList(1)),
-                Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5))
+                Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5)),
+                Arguments.of(Generator.lottoNumberList(1, 2, 3, 4, 5, 6, 7))
         );
     }
 

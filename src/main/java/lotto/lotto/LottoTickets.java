@@ -38,4 +38,10 @@ public class LottoTickets {
                 .map(lottoTicket -> lottoTicket.matchPrize(winningNumbers))
                 .collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
     }
+
+    public LottoTickets addTickets(final LottoTickets autoTickets) {
+        this.lottoTickets.addAll(autoTickets.lottoTickets);
+
+        return this;
+    }
 }

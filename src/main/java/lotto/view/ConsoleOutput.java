@@ -1,5 +1,6 @@
 package lotto.view;
 
+import lotto.dto.BuyInfo;
 import lotto.dto.LottoTicketDto;
 import lotto.match.MatchResult;
 import lotto.prize.LottoPrize;
@@ -8,7 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ConsoleOutput {
-    private static final String BUY_INFO_FORMAT = "%d개를 구매했습니다.";
+    private static final String BUY_INFO_FORMAT = "수동으로 %d개, 자동으로 %d개를 구매했습니다.";
     private static final String WIN_PRIZE_STATISTICS_STATEMENT = "당첨 통계\n----------";
     private static final String LOTTO_PRIZE_SUMMARY_FORMAT = "%d개 일치 (%d원) - %d개";
     private static final String LOTTO_SECOND_PRIZE_SUMMARY_FORMAT = "%d개 일치, 보너스 볼 일치(%d원) - %d개";
@@ -16,10 +17,11 @@ public class ConsoleOutput {
 
     private ConsoleOutput() {}
 
-    public static void showLottoTickets(final List<LottoTicketDto> lottoTickets) {
-        System.out.println(String.format(BUY_INFO_FORMAT, lottoTickets.size()));
+    public static void showLottoTickets(final BuyInfo buyInfo) {
+        System.out.println(String.format(BUY_INFO_FORMAT, buyInfo.getNoOfManualLotto(), buyInfo.getNoOfAutoLotto()));
 
-        lottoTickets.stream()
+        buyInfo.getLottoTickets()
+                .stream()
                 .map(LottoTicketDto::getNumbers)
                 .map(List::toArray)
                 .map(Arrays::toString)
@@ -39,7 +41,6 @@ public class ConsoleOutput {
         String summaryFormat = lottoPrize == LottoPrize.SECOND ?
                 LOTTO_SECOND_PRIZE_SUMMARY_FORMAT :
                 LOTTO_PRIZE_SUMMARY_FORMAT;
-
 
         String summary = String.format(
                 summaryFormat,
